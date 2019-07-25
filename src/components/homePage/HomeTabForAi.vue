@@ -1,18 +1,16 @@
 <template>
-    <div>
-        AI
-    </div>
+  <div>AI</div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            
-        }
-    }
-}
+  data() {
+    return {};
+  },
+  activated() {
+    this.$emit("whatName", "AI");
+  }
+};
 </script>
 <style scoped>
-
 </style>

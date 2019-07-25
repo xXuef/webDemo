@@ -34,6 +34,7 @@ export default {
   },
   activated(){
     this.loadRoute();
+      this.$emit('navSelect','2')
   },
   created() {
     this.loadRoute();
@@ -49,12 +50,12 @@ export default {
         this.loadRoute();
       } else if (tab.name == "AI") {
         this.$router.push({
-          name: "SpecialTabForAI",
+          name: "specialTabForAI",
           query: {}
         });
       } else if (tab.name == "fromWork") {
         this.$router.push({
-          name: "SpecialTabForAI"
+          name: "specialTabForAI"
         });
       } else if (tab.name == "blockChain") {
         this.$router.push({

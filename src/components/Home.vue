@@ -68,7 +68,7 @@
     <!--内容界面------------------------------------------------------->
     <div class="autoCenter">
       <keep-alive>
-        <router-view name="navContainer" ></router-view>
+        <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
       </keep-alive>
     </div>
   </div>
@@ -93,16 +93,17 @@ export default {
     // 接收参数 外加判断
     this.loginBooleanNow();
     this.loadRoute();
-    this.$on("nowIndex", function(now) {
-      this.activeName = now;
-      console.log("nowindex" + now);
-    });
-    this.activeName = "4";
+  
   },
 
   methods: {
     showTabs(value = false) {
       this.tabShow = value;
+    },
+    getNavSelect(name){
+      console.log('nowNav'+name);
+      
+      this.activeName=name
     },
     // 去发布编辑页面
     toSend() {
@@ -129,13 +130,17 @@ export default {
         console.log("1");
         this.showTabs(true);
         this.$router.push({
-          name: "homeMainRoute"
+          name: "HomeTabForAhead",
+          query:{
+            tabName:'webHead'
+          }
         });
+
       } else if (key == 2) {
         this.showTabs();
         console.log("2");
         this.$router.push({
-          name: "special"
+          name: "specialTabForAhead"
         });
       } else if (key == 3) {
         this.showTabs();
@@ -202,11 +207,6 @@ export default {
           activeName: "mySend"
         });
       }
-    },
-    //tab控件使用的所用到的方法
-    getName(name) {
-      this.activeName = name;
-      console.log(this.activeName);
     },
    
   }

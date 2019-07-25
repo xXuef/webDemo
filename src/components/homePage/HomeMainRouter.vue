@@ -16,7 +16,9 @@
 
     <list-sort></list-sort>
 
-    <router-view name="homeTabRouter"></router-view>
+    <keep-alive>
+      <router-view name="homeTabRouter" @whatName="getName"></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -39,17 +41,25 @@ export default {
   },
   created() {
     this.loadRoute();
+     this.activeName='webHead'
   },
   //使用keep-alive之后生命钩子只会执行这个
   activated() {
     this.loadRoute();
-    this.$emit("whatName", "webHead");
+    this.getName();
+    this.$emit('navSelect','1')
+    this.activeName='webHead'
   },
   methods: {
     loadRoute() {
       this.$router.push({
         name: "HomeTabForAhead"
       });
+    },
+    //tab控件使用的所用到的方法
+    getName(name) {
+      this.activeName = name;
+      console.log(this.activeName);
     },
     handleClick(tab, event) {
       if (tab.name == "webHead") {

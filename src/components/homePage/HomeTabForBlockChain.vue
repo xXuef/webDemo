@@ -6,7 +6,9 @@
 
 <script>
 export default {
-    
+    activated(){
+  this.$emit("whatName", "blockChain");
+    }
 }
 </script>
 <style scoped>

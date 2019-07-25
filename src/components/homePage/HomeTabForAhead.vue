@@ -35,8 +35,17 @@ export default {
       liList: []
     };
   },
+  activated(){
+     
+   
+    //  this.$route.query.tabName==true?this.$route.query.tabName:'webHead'
+       this.$emit("whatName", 'webHead');
+     console.log('router');
+     
+  },
   created(){
       this.getList()
+       
   },
   methods: {
     getList() {

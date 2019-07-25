@@ -116,7 +116,7 @@ export default new VueRouter({
             },
             {
               path: "specialTabForAI",
-              name: "SpecialTabForAI",
+              name: "specialTabForAI",
               components: {
                 specialRouter: SpecialTabForAI
               }
@@ -213,10 +213,10 @@ export default new VueRouter({
           }
         }
       ]
+    },
+    {
+      path: '/*',
+      redirect: '/login'
     }
-    // {
-    //   path: '/*',
-    //   redirect: '/login'
-    // }
   ]
 });
