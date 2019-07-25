@@ -15,17 +15,11 @@
       </el-input>
     </div>
 
-
     <list-sort></list-sort>
-    <div class="books">
-      <ul>
-        <li v-for="(item,index) in eBookList" @click="toDetails" :key="index"> 
-          <img :src="item.bookImg" alt="">
-          <span class="bookName">{{item.bookName}}</span>
-          <span class="bookAuthor">{{item.bookAuthor}}</span>
-        </li>
-      </ul>
-    </div>
+
+    <router-view name="eBookRouter"></router-view>
+
+   
   </div>
 </template>
 
@@ -36,7 +30,6 @@
     name: "EBook",
     data() {
       return {
-        eBookList: [],
         activeName: 'webHead',
         input2: ''
       }
@@ -44,29 +37,38 @@
     components: {
       ListSort,
     },
-    created() {
-      this.getFalseData()
+    activated(){
+      this.loadRoute()
     },
-    activated() {
-      this.$emit('nowIndex', '3')
+    created() {
+      this.loadRoute()
     },
     methods: {
-      getFalseData() {
-        this.$http.get('/home/list').then((res) => {
-          this.eBookList = res.body.articles
-        }, (err) => {
-          console.log(err);
-        })
-      },
-      toDetails() {
+      loadRoute(){
         this.$router.push({
-          name: 'webAheadDetails',
-          query: {
-            id: 10012
-          }
+          name:'eBookTabForAHead',
         })
       },
       handleClick(tab, event) {
+        if (tab.name == "webHead") {
+        this.loadRoute();
+      } else if (tab.name == "AI") {
+        this.$router.push({
+          name: "eBookTabForAI",
+        });
+      } else if (tab.name == "fromWork") {
+        this.$router.push({
+          name: "eBookTabForAHead"
+        });
+      } else if (tab.name == "blockChain") {
+        this.$router.push({
+          name: "eBookTabForAI"
+        });
+      } else if (tab.name == "codeLanguage") {
+        this.$router.push({
+          name: "eBookTabForAHead"
+        });
+      }
         console.log(tab, event);
       }
     }
@@ -82,40 +84,5 @@
 
   /* .books {} */
 
-  .books ul li {
-    float: left;
-    list-style: none;
-    width: 25%;
-    margin-bottom: 20px;
-    text-align: center;
-    cursor: pointer;
-  }
-
-
-  .books ul li img {
-    width: 216px;
-    height: 306px;
-    background: rgba(0, 0, 0, 0);
-
-  }
-
-  .books ul li .bookName {
-    margin-top: 12px;
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 22px;
-    color: rgba(40, 41, 35, 1);
-    opacity: 1;
-  }
-
-  .books ul li .bookAuthor {
-    margin-top: 12px;
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 22px;
-    color: rgba(40, 41, 35, 1);
-    opacity: 1;
-  }
+  
 </style>

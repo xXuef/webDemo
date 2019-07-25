@@ -1,5 +1,6 @@
+<!--前端界面-->
 <template>
-  <div class="special">
+  <div class="webAhead">
     <!--      第二导航-->
     <div class="tabContainer">
       <el-tabs type="border-card" @tab-click="handleClick" v-model="activeName">
@@ -15,33 +16,39 @@
 
     <list-sort></list-sort>
 
-    <router-view name="specialRouter"></router-view>
+    <router-view name="homeTabRouter"></router-view>
   </div>
 </template>
 
 <script>
+import "font-awesome/css/font-awesome.min.css";
 import ListSort from "../page/ListSort.vue";
 
 export default {
   data() {
     return {
-      input2: "",
-      activeName: "webHead"
+      showFirstComment: false,
+      showTwoComment: false,
+
+      activeName: "webHead",
+      input2: ""
     };
   },
   components: {
     ListSort
   },
-  activated(){
-    this.loadRoute();
-  },
   created() {
     this.loadRoute();
+  },
+  //使用keep-alive之后生命钩子只会执行这个
+  activated() {
+    this.loadRoute();
+    this.$emit("whatName", "webHead");
   },
   methods: {
     loadRoute() {
       this.$router.push({
-        name: "specialTabForAhead"
+        name: "HomeTabForAhead"
       });
     },
     handleClick(tab, event) {
@@ -49,20 +56,23 @@ export default {
         this.loadRoute();
       } else if (tab.name == "AI") {
         this.$router.push({
-          name: "SpecialTabForAI",
+          name: "HomeTabForAi",
           query: {}
         });
       } else if (tab.name == "fromWork") {
         this.$router.push({
-          name: "SpecialTabForAI"
+          name: "HomeTabForFromwork",
+          query: {}
         });
       } else if (tab.name == "blockChain") {
         this.$router.push({
-          name: "specialTabForAhead"
+          name: "HomeTabForBlockChain",
+          query: {}
         });
       } else if (tab.name == "codeLanguage") {
         this.$router.push({
-          name: "specialTabForAhead"
+          name: "HomeTabForComputerCode",
+          query: {}
         });
       }
       console.log(tab, event);
@@ -72,9 +82,11 @@ export default {
 </script>
 
 <style scoped>
-.special {
-  height: 100%;
+.webAhead {
   background: #ffffff;
-  width: 100%;
+}
+
+ul {
+  padding: 0;
 }
 </style>

@@ -1,3 +1,4 @@
+// 此界面为login之后的第一界面架子
 <template>
   <div class="myHeader">
     <!--头部`````````````````````````````````````````````````````````-->
@@ -66,26 +67,8 @@
     </div>
     <!--内容界面------------------------------------------------------->
     <div class="autoCenter">
-      <!--      第二导航-->
-      <div class="tabContainer" v-show="tabShow">
-        <el-tabs type="border-card" @tab-click="handleClick" v-model="activeName">
-          <el-tab-pane label="前端" name="webHead" class="is-active"></el-tab-pane>
-          <el-tab-pane label="人工智能" name="AI"></el-tab-pane>
-          <el-tab-pane label="架构" name="fromWork"></el-tab-pane>
-          <el-tab-pane label="区块链" name="blockChain"></el-tab-pane>
-          <el-tab-pane label="编程语言" name="codeLanguage"></el-tab-pane>
-        </el-tabs>
-
-        <el-input
-          class="tabInput"
-          placeholder="请输入内容"
-          prefix-icon="el-icon-search"
-          v-model="input2"
-        ></el-input>
-      </div>
-
       <keep-alive>
-        <router-view name="homeContainer" @whatName="getName"></router-view>
+        <router-view name="navContainer" ></router-view>
       </keep-alive>
     </div>
   </div>
@@ -97,17 +80,12 @@ import "../mock/homeList.js";
 export default {
   data() {
     return {
-      // tab控件使用值
-      activeName: "webHead",
-      input2: "",
-
       activeIndex: "1",
       loginBoolean: false,
       centerDialogVisible: false,
       inputOne: "",
       inputTwo: "",
-      // 第二导航的显示与否
-      tabShow: true,
+    //  是不是中心界面的nav被触发
       isClickPersonalCenter: false
     };
   },
@@ -142,7 +120,7 @@ export default {
     //加载前端界面路由
     loadRoute() {
       this.$router.push({
-        name: "webAhead"
+        name: "homeMainRoute"
       });
     },
     // nav导航的点击控制
@@ -151,7 +129,7 @@ export default {
         console.log("1");
         this.showTabs(true);
         this.$router.push({
-          name: "webAhead"
+          name: "homeMainRoute"
         });
       } else if (key == 2) {
         this.showTabs();
@@ -230,32 +208,7 @@ export default {
       this.activeName = name;
       console.log(this.activeName);
     },
-    handleClick(tab, event) {
-      if (tab.name == "webHead") {
-        this.loadRoute();
-      } else if (tab.name == "AI") {
-        this.$router.push({
-          name: "forAi",
-          query: {}
-        });
-      } else if (tab.name == "fromWork") {
-        this.$router.push({
-          name: "forFramework",
-          query: {}
-        });
-      } else if (tab.name == "blockChain") {
-        this.$router.push({
-          name: "forBlockChain",
-          query: {}
-        });
-      } else if (tab.name == "codeLanguage") {
-        this.$router.push({
-          name: "forComputerLanguage",
-          query: {}
-        });
-      }
-      console.log(tab, event);
-    }
+   
   }
 };
 </script>

@@ -1,7 +1,10 @@
 <template>
   <div id="app">
 
-    <!--    总路由  在home界面中还有一个    个人中心也有一个-->
+    <!--    总路由 
+    
+   在home界面中还有一个    个人中心也有一个-->
+   <!-- 只有一个home login -->
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
