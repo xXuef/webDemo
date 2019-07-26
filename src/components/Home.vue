@@ -151,7 +151,6 @@ export default {
       } else if (key == 4) {
         if (!this.loginBoolean) {
           this.showDialogLogin();
-          // this.loginBoolean = true;
           this.isClickPersonalCenter = true;
           this.showTabs(false);
           return;
