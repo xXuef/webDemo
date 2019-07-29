@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         区块链
     </div>
 </template>

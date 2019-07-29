@@ -1,7 +1,10 @@
+
+
 <template>
+<!-- /*详情界面*/ -->
   <div class="details">
     <div class="detailsHeader">
-      <span class="title"><b>Apollo 轨迹规划技术分享</b></span>
+      <span class="title"><b>{{this.title}}Apollo 轨迹规划技术分享</b></span>
       <el-button class="pdf" size="mini">下载PDF</el-button>
       <el-button class="copy" size="mini">复制链接</el-button>
     </div>
@@ -15,7 +18,18 @@
 
 <script>
   export default {
-    name: "WebAheadDetails"
+    data(){
+      return{
+        title:''
+      }
+    }
+    ,
+    created(){
+       this.title = this.$route.query.name
+    },
+    activated(){
+      this.title = this.$route.query.name
+    }
   }
 </script>
 

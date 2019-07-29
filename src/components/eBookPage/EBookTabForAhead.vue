@@ -55,8 +55,7 @@ export default {
 }
 
 .books ul li img {
-  width: 216px;
-  height: 306px;
+  width: 90%;
   background: rgba(0, 0, 0, 0);
 }
 

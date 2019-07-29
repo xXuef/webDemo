@@ -71,8 +71,8 @@ export default {
 }
 
 .specialContainer ul li {
-  display: block;
-  width: 520px;
+  width: 45%;
+  float: left;
   background: rgba(255, 255, 255, 1);
   border: 1px solid rgba(230, 230, 230, 1);
   border-radius: 4px;
@@ -82,14 +82,9 @@ export default {
 }
 
 /*奇数*/
-.specialContainer ul li:nth-child(odd) {
+.specialContainer ul li{
   float: left;
-  margin-left: 42px;
-}
-
-.specialContainer ul li:nth-child(even) {
-  float: right;
-  margin-right: 42px;
+  margin-left: 10px;
 }
 
 .specialContainer ul li a {
@@ -97,7 +92,7 @@ export default {
   color: rgba(102, 102, 102, 1);
 }
 
-.specialContainer ul li a img {
+.specialContainer ul li img {
   width: 100%;
   height: 224px;
   margin-bottom: 10px;
@@ -119,7 +114,7 @@ export default {
   margin-top: 10px;
   font-size: 14px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 18px;
   color: rgba(102, 102, 102, 1);
   opacity: 1;
 }

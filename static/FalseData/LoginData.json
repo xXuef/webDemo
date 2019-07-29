@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "code": 1,
+      "code说明": "0为未登录 1为登录",
+      "accountNum": "123",
+      "passWord": "123",
+      "userName":"王境泽"
+    }
+  ]
+}

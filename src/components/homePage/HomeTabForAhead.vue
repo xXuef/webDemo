@@ -1,5 +1,5 @@
 <template>
-  <div class="webAheadContainer">
+  <div class="HomeContainer">
     <ul>
       <li v-for="(item,index) in liList" class="bigComment" :key="index">
         <span class="title" @click="toDetails">
@@ -10,15 +10,16 @@
         </a>
         <br />
         <a href="#">
-          <i class="el-icon-user"></i>
-          <span class="userName">{{item.name}}</span>
+          <img :src="item.userIcon" alt />
+          <span class="userName">{{item.userName}}</span>
         </a>
-        <a href="#" class="sendTime">2018-01-10</a>
+        <a href="#" class="sendTime">{{item.time}}</a>
+        
         <a href="#" class="liStar">
           <i class="el-icon-star-off"></i>
-          <span class="textStart">收藏</span>
+          <span class="textStart" @click="star">收藏</span>
         </a>
-        <a href="#" @click="firstComment" class="liComment">
+        <a href="#" class="liComment">
           <i class="el-icon-s-comment"></i>
           <span class="textComment">评论</span>
         </a>
@@ -28,90 +29,95 @@
 </template>
 
 <script>
-import "../../mock/homeList.js";
 export default {
   data() {
     return {
       liList: []
     };
   },
-  activated(){
-     
-   
+  activated() {
     //  this.$route.query.tabName==true?this.$route.query.tabName:'webHead'
-       this.$emit("whatName", 'webHead');
-     console.log('router');
-     
+    this.$emit("whatName", "webHead");
+    console.log("router");
   },
-  created(){
-      this.getList()
-       
+  created() {
+    this.getList();
   },
   methods: {
     getList() {
-      this.$http.get("/home/list").then(res => {
-        console.log(res.body);
-        this.liList = res.body.articles;
-      });
+      this.$http
+        .get("../../../static/FalseData/FalseDataForHome.json")
+        .then(res => {
+          console.log(res.body);
+          sessionStorage.setItem("homeFlaseData", JSON.stringify(res.body));
+          this.liList = res.body.home[0].data.webAheadData;
+        });
     },
     toDetails() {
       this.$router.push({
         name: "webAheadDetails",
         query: {
-          id: 10012
+          name: "前端"
         }
       });
     },
-    firstComment() {
-      if (this.showFirstComment) {
-        this.showFirstComment = false;
-      } else {
-        this.showFirstComment = true;
-      }
-    },
-    twoComment() {
-      if (this.showTwoComment) {
-        this.showTwoComment = false;
-      } else {
-        this.showTwoComment = true;
-      }
+    star() {
+      $(function() {
+        if ($(".liStar i").hasClass("el-icon-star-off")) {
+          $(".liStar i").removeClass("el-icon-star-off");
+          $(".liStar i").addClass("el-icon-star-on");
+        } else {
+          $(".liStar i").removeClass("el-icon-star-on");
+          $(".liStar i").addClass("el-icon-star-off");
+        }
+      });
     }
   }
 };
 </script>
-<style scoped>
-.webAheadContainer ul li {
+<style>
+.HomeContainer ul li {
   padding: 10px 10px 20px;
   border-bottom: 1px solid rgba(245, 245, 245, 1);
   list-style: none;
   position: relative;
 }
 
-.webAheadContainer ul li a {
+.HomeContainer ul li a {
   text-decoration: none;
   color: #35aba3;
 }
 
-.webAheadContainer .title {
+.HomeContainer .title {
   color: #333333;
   font-size: 18px;
   cursor: pointer;
 }
 
-.webAheadContainer .userName {
+.HomeContainer .userName {
   margin-left: 5px;
   color: #35aba3;
   font-size: 12px;
+  line-height: 20px;
+  vertical-align: middle;
 }
 
-.webAheadContainer .sendTime {
+.HomeContainer .sendTime {
   margin-left: 20px;
   color: #666666;
   font-size: 12px;
+  line-height: 20px;
+  vertical-align: middle;
 }
-
-.webAheadContainer .liComment,
-.webAheadContainer .liStar {
+.HomeContainer ul li a img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  line-height: 20px;
+  vertical-align: middle;
+}
+.HomeContainer .liComment,
+.HomeContainer .liStar {
   display: block;
   padding-bottom: 0;
   float: right;
@@ -119,19 +125,19 @@ export default {
   font-size: 14px;
 }
 
-.webAheadContainer ul li a p {
+.HomeContainer ul li a p {
   margin-top: 12px;
   color: #666;
   font-size: 14px;
   line-height: 21px;
 }
 
-.webAheadContainer .textComment,
-.webAheadContainer .textStart {
+.HomeContainer .textComment,
+.HomeContainer .textStart {
   margin-left: 5px;
 }
 
-.webAheadContainer .textComment {
+.HomeContainer .textComment {
   margin-right: 30px;
 }
 </style>

@@ -5,9 +5,7 @@
     
    在home界面中还有一个    个人中心也有一个-->
    <!-- 只有一个home login -->
-    <keep-alive>
       <router-view></router-view>
-    </keep-alive>
   </div>
 </template>
 
@@ -17,17 +15,24 @@
     components: {},
     data() {
       return {
-        Login: false
+        Login: null
       }
     },
     created() {
       this.LogonBoolean();
+    
     }, methods: {
       LogonBoolean() {
-        if (!this.Login) {//没有登录
-          // 跳向 /
-          this.$router.push('login');
-        }
+
+        var LoginOrNo=localStorage.getItem("loginStatus")
+        console.log('TTT'+LoginOrNo);
+        
+        if (LoginOrNo=='true') {
+          // 登录了跳向 /
+          this.$router.push('home');
+        }else if(LoginOrNo=='false'){
+            this.$router.push('login');
+        }   
       }
     }
   }

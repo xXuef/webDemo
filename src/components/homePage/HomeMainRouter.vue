@@ -41,14 +41,14 @@ export default {
   },
   created() {
     this.loadRoute();
-     this.activeName='webHead'
+    this.activeName = "webHead";
   },
   //使用keep-alive之后生命钩子只会执行这个
   activated() {
     this.loadRoute();
     this.getName();
-    this.$emit('navSelect','1')
-    this.activeName='webHead'
+    this.$emit("navSelect", "1");
+    this.activeName = "webHead";
   },
   methods: {
     loadRoute() {
@@ -98,5 +98,18 @@ export default {
 
 ul {
   padding: 0;
+}
+.forTranstionBug {
+  position: relative;
+}
+
+.clearfix.after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* <!-- ie6 --> */
+.clearfix {
+  zoom: 1;
 }
 </style>

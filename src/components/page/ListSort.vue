@@ -1,13 +1,11 @@
 <template>
-  <div>
 
-    <div class="specialSort">
-      <el-button size="small" @click="btSort('all')">全部</el-button>
+    <div class="allSort">
+      <el-button class="active" size="small" @click="btSort('all')">全部</el-button>
       <el-button size="small"  @click="btSort('newest')">最新</el-button>
       <el-button size="small"  @click="btSort('hot')">最热</el-button>
     </div>
 
-  </div>
 </template>
 
 <script>
@@ -29,13 +27,13 @@
 <style scoped>
 
 
-  .specialSort:first-child {
+  .allSort:first-child {
     margin-left: 15px;
     margin-bottom: 10px;
   }
 
   /*  button 修改*/
-  .el-button {
+  .allSort .el-button {
     display: inline-block;
     line-height: 1;
     white-space: nowrap;
@@ -58,7 +56,7 @@
     border-radius: 4px;
   }
 
-  .el-button:first-child {
+  .allSort .el-button.active {
     border: 1px solid #dcdfe6;
     color: white;
     background: #ccc;

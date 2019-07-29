@@ -20,8 +20,17 @@
         <div class="topRight">
           <ul>
             <li>
-              <i class="el-icon-user"></i>
-              <span>王境泽</span>
+              <img
+                class="userIcon"
+                src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+              />
+
+              <el-dropdown trigger="click" @command="handleCommand">
+                <span class="el-dropdown-link">{{this.userName}}</span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item command="a">退出</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
             </li>
 
             <li @click="toSend">
@@ -68,7 +77,7 @@
     <!--内容界面------------------------------------------------------->
     <div class="autoCenter">
       <keep-alive>
-        <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
+          <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
       </keep-alive>
     </div>
   </div>
@@ -81,11 +90,11 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      loginBoolean: false,
+      userName: "",
       centerDialogVisible: false,
       inputOne: "",
       inputTwo: "",
-    //  是不是中心界面的nav被触发
+      //  是不是中心界面的nav被触发
       isClickPersonalCenter: false
     };
   },
@@ -93,17 +102,27 @@ export default {
     // 接收参数 外加判断
     this.loginBooleanNow();
     this.loadRoute();
-  
+    this.userName = localStorage.getItem("userName");
   },
 
   methods: {
+    // 下拉菜单
+    handleCommand(command) {
+      if (command == "a") {
+        localStorage.setItem("loginStatus", "false");
+        $(function() {
+          $(".topRight").css("display", "none");
+          $(".textLogin").css("display", "block");
+        });
+      }
+    },
     showTabs(value = false) {
       this.tabShow = value;
     },
-    getNavSelect(name){
-      console.log('nowNav'+name);
-      
-      this.activeName=name
+    getNavSelect(name) {
+      console.log("nowNav" + name);
+
+      this.activeName = name;
     },
     // 去发布编辑页面
     toSend() {
@@ -131,11 +150,10 @@ export default {
         this.showTabs(true);
         this.$router.push({
           name: "HomeTabForAhead",
-          query:{
-            tabName:'webHead'
+          query: {
+            tabName: "webHead"
           }
         });
-
       } else if (key == 2) {
         this.showTabs();
         console.log("2");
@@ -149,7 +167,12 @@ export default {
           name: "eBook"
         });
       } else if (key == 4) {
-        if (!this.loginBoolean) {
+        var loginOrNo = localStorage.getItem("loginStatus");
+        console.log(localStorage.getItem("loginStatus"));
+
+        if (loginOrNo == "false") {
+          console.log("123123123123");
+
           this.showDialogLogin();
           this.isClickPersonalCenter = true;
           this.showTabs(false);
@@ -164,15 +187,20 @@ export default {
     // 接收上个界面的路由参数判断是否登录
     // 并且显示隐藏右上角的登录跟用户界面
     loginBooleanNow() {
-      this.loginBoolean = this.$route.query.loginBoolean;
-      if (this.loginBoolean) {
+      var LoginOrNo = localStorage.getItem("loginStatus");
+      console.log("loginBooleanNow" + LoginOrNo);
+
+      if (LoginOrNo == "true") {
+        console.log("+++++++++++++++++++");
+
         //如果登录状态为true 登录按钮出来block 另外三个按钮none
-        this.btForLogin();
-      } else {
+        $(function() {
+          $(".topRight").css("display", "block");
+          $(".textLogin").css("display", "none");
+        });
+      } else if (LoginOrNo == "false") {
         //如果登录状态为false  登录按钮出来block 另外三个按钮none
         $(function() {
-          console.log("click123");
-          console.log(this.loginBoolean);
           $(".topRight").css("display", "none");
           $(".textLogin").css("display", "block");
         });
@@ -189,25 +217,56 @@ export default {
       this.centerDialogVisible = false;
     },
     btForLogin() {
-      $(function() {
-        console.log("click123");
-        console.log(this.loginBoolean);
-        $(".topRight").css("display", "block");
-        $(".textLogin").css("display", "none");
-      });
-      // diaglog消失
-      this.hiddenDialogLogin();
-      // 登录状态 弄成true
-      this.loginBoolean = true;
-      if (this.isClickPersonalCenter) {
-        console.log("触发dialog完事跳转个人中心");
-        this.$router.push({
-          name: "personalSend",
-          activeName: "mySend"
+      //非空判断
+      var account = this.inputOne.trim();
+      var pw = this.inputTwo.trim();
+      if (account == "" || pw == "") {
+        this.$message({
+          showClose: true,
+          message: "请输入账号密码！"
         });
+        return;
       }
-    },
-   
+
+      this.$http.get("../../static/FalseData/LoginData.json").then(
+        res => {
+          console.log(res);
+          this.loginInfo = res.body.data[0];
+          if (
+            this.loginInfo.accountNum == this.inputOne &&
+            this.loginInfo.passWord == this.inputTwo
+          ) {
+            console.log("进来登录逻辑了");
+            localStorage.setItem("loginStatus", "true");
+            localStorage.setItem("userName", this.loginInfo.userName);
+            this.$router.push({
+              name: "HomeTabForAhead"
+            });
+          } else {
+            this.$message({
+              showClose: true,
+              message: "账号密码错误！"
+            });
+            return;
+          }
+          $(function() {
+            console.log("click123");
+            $(".topRight").css("display", "block");
+            $(".textLogin").css("display", "none");
+          });
+          // diaglog消失
+          this.hiddenDialogLogin();
+          if (this.isClickPersonalCenter) {
+            console.log("触发dialog完事跳转个人中心");
+            this.$router.push({
+              name: "personalSend",
+              activeName: "mySend"
+            });
+          }
+        },
+        err => {}
+      );
+    }
   }
 };
 </script>
@@ -233,7 +292,7 @@ export default {
 .autoCenter {
   padding: 0 10px 10px;
   /*background: #ffffff;*/
-  width: 1200px;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -244,7 +303,7 @@ export default {
 }
 
 .wp {
-  width: 1200px;
+  width: 80%;
   height: 45px;
   margin: 0 auto 15px;
   padding: 0;
@@ -279,13 +338,26 @@ export default {
   color: #ccc;
   font-size: 15px;
   line-height: 45px;
+  height: 100%;
+  vertical-align: middle;
 }
-
+.topRight .userIcon {
+  height: 15px;
+  width: 15px;
+  border: none;
+  border-radius: 50%;
+  line-height: 1;
+  vertical-align: middle;
+}
+.topRight [class*=" el-icon-"],
+[class^="el-icon-"] {
+  vertical-align: middle;
+}
 .myIcon {
   width: 100px;
   height: 45px;
-  float: left;
   cursor: pointer;
+  float: left;
 }
 
 .myIcon img {
@@ -379,7 +451,7 @@ export default {
 
 /*tab控件css配置开始····在其他界面也是各种用···········*/
 .tabContainer {
-  width: 1200px;
+  width: 100%;
   height: auto;
   margin: 0 auto;
   background: #d4e3fb;
@@ -472,4 +544,18 @@ export default {
 }
 
 /*# tab配置结束··························*/
+
+.el-dropdown-link {
+  cursor: pointer;
+  color: #ccc;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+.demonstration {
+  display: block;
+  color: #8492a6;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
 </style>

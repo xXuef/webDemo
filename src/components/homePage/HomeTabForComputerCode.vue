@@ -1,5 +1,8 @@
 <template>
-  <div>编程语言</div>
+  <div class="container">
+    
+    <span class="txt">编程语言</span>
+  </div>
 </template>
 <script>
 export default {
@@ -8,3 +11,7 @@ export default {
   }
 };
 </script>
+<style scoped>
+
+
+</style>

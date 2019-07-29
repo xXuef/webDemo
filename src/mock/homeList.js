@@ -22,7 +22,7 @@ const produceNewsData = function() {
       title:  '轨迹规划技术分享', //  Random.csentence( min, max )
       content: '轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾核心模块之一。轨迹规划是无人驾核心模块之一。轨迹规划是无人驾核心模块之一。轨迹规划是无人驾驶系统...', // Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码
       name : Random.cname(),
-      pic:Random.dataImage('550x250', 'mock的图片'),
+      pic:Random.dataImage('1000x500', 'mock的图片'),
       cdTitle:'给后端程序员看的 Vue 快速入门教程',
       cdContent:'轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之几一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之 ... ...',
       icon:Random.dataImage('50x50', '0_0'),
@@ -40,3 +40,4 @@ const produceNewsData = function() {
 
 // Mock.mock( url, post/get , 返回的数据)；
 Mock.mock('/home/list', 'get', produceNewsData);
+console.log(JSON.stringify(produceNewsData));
