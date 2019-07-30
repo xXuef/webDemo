@@ -61,13 +61,19 @@
         :modal-append-to-body="false"
         class="divElDialog"
         center
+        @close="closeDialog"
       >
         <div class="dialogBody" style="text-align: center;padding: 0">
           <el-input class="elInput inputOne" clearable v-model="inputOne" placeholder="账号"></el-input>
-          <el-input class="elInput inputTwo" clearable v-model="inputTwo" placeholder="密码"></el-input>
-          <div style="width: 320px;margin: 0 auto">
-            <span class="forgetPw">忘记密码</span>
-          </div>
+          <el-input
+            class="elInput inputTwo"
+            type="password"
+            clearable
+            v-model="inputTwo"
+            placeholder="密码"
+          ></el-input>
+
+          <span class="forgetPw">忘记密码</span>
         </div>
         <span slot="footer" class="dialog-footer">
           <el-button class="btLogin" type="primary" @click="btForLogin">确定</el-button>
@@ -77,15 +83,13 @@
     <!--内容界面------------------------------------------------------->
     <div class="autoCenter">
       <keep-alive>
-          <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
+        <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
       </keep-alive>
     </div>
   </div>
 </template>
 
 <script>
-import "../mock/homeList.js";
-
 export default {
   data() {
     return {
@@ -164,7 +168,7 @@ export default {
         this.showTabs();
         console.log("3");
         this.$router.push({
-          name: "eBook"
+          name: "eBookTabForAHead"
         });
       } else if (key == 4) {
         var loginOrNo = localStorage.getItem("loginStatus");
@@ -178,6 +182,7 @@ export default {
           this.showTabs(false);
           return;
         }
+
         this.$router.push({
           name: "personalSend"
         });
@@ -216,6 +221,20 @@ export default {
     hiddenDialogLogin() {
       this.centerDialogVisible = false;
     },
+    closeDialog() {
+      console.log("dialog关闭监听");
+      // 进来不管啥都给他false
+      this.isClickPersonalCenter = false;
+      this.inputOne = "";
+      this.inputTwo = "";
+      let loginStatus = localStorage.getItem("loginStatus");
+      if (loginStatus == "false") {
+        this.isClickPersonalCenter = false;
+      } else if (loginStatus == "true") {
+        this.isClickPersonalCenter = true;
+      }
+    },
+    // dialog中的登录按钮
     btForLogin() {
       //非空判断
       var account = this.inputOne.trim();
@@ -403,15 +422,15 @@ export default {
 }
 
 .divToast .elInput {
-  width: 320px;
+  width: 95%;
 }
 
 .divToast .forgetPw {
   display: block;
   text-align: right;
+  margin-right: 5px;
   font-size: 12px;
   margin-top: 20px;
-  font-weight: 500;
   line-height: 17px;
   color: rgba(53, 171, 163, 1);
   opacity: 1;
@@ -435,7 +454,7 @@ export default {
 }
 
 .divToast .btLogin {
-  width: 320px;
+  width: 95%;
   height: 40px;
   background: rgba(53, 171, 163, 1);
   opacity: 1;

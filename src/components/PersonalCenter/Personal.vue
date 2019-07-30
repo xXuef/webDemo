@@ -1,24 +1,32 @@
 <template>
   <div class="perContainer">
+    
     <img src="../../../static/icon_home_want_delete.png" alt="">
     <div class="divName">
-      <a href="#">
+      <a href="javascript:;">
         <span class="personalName">Name</span> </a>
-      <a href=""><span class="edit"><i class="el-icon-edit-outline"></i></span>
+      <a href="javascript:;"><span class="edit"><i class="el-icon-edit-outline"></i></span>
       </a>
     </div>
     <div class="divPw">
-      <a href="#" class="accountTxt">账号:<span class="Account">123123213</span></a>
-      <a href="#" class="pwTxt">密码:<span class="Pw">********</span></a>
-      <a href="#" class="edit">修改</a>
+      <a href="javascript:;" class="accountTxt">账号:<span class="Account">123123213</span></a>
+      <a href="javascript:;" class="pwTxt">密码:<span class="Pw">********</span></a>
+      <a href="javascript:;" class="edit">修改</a>
       
     </div>
+    <div class="testPage" @click="toTestPage"></div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Personal"
+    methods:{
+      toTestPage(){
+        this.$router.push({
+          name:'test'
+        })
+      }
+    }
   }
 </script>
 
@@ -72,5 +80,10 @@
     line-height:22px;
     color:rgba(53,171,163,1);
     opacity:1;
+  }
+  .testPage{
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
   }
 </style>

@@ -55,7 +55,7 @@ export default {
         });
       } else if (tab.name == "fromWork") {
         this.$router.push({
-          name: "specialTabForAI"
+          name: "specialTabForFormwork"
         });
       } else if (tab.name == "blockChain") {
         this.$router.push({

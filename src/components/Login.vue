@@ -1,14 +1,16 @@
 <template>
-  <div class="container">
-    <img src="../../static/login_bg.png" alt class="centerImg" />
+  <div class="loginContainer">
+    <div style="width: 20px;height: 20px; "></div>
+    <div class="centerContent">
 
-    <div class="box">
-      <img src="../../static/icon_logo.png" alt />
+      <div class="box">
+        <img src="../../static/icon_logo.png" alt />
 
-      <el-input class="elInput inputOne" clearable v-model="inputAccount" placeholder="账号"></el-input>
-      <el-input class="elInput inputTwo" clearable v-model="inputPw" placeholder="密码"></el-input>
-      <el-button :plain="true" class="btLogin" @click="btLogin">登录</el-button>
-      <el-button :plain="true" class="btLoginCopy" @click="skip">跳过</el-button>
+        <el-input class="elInput inputOne" clearable v-model="inputAccount" placeholder="账号"></el-input>
+        <el-input class="elInput inputTwo" type="password" clearable v-model="inputPw" placeholder="密码"></el-input>
+        <el-button :plain="true" class="btLogin" @click="btLogin">登录</el-button>
+        <el-button :plain="true" class="btLoginCopy" @click="skip">跳过</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -19,11 +21,12 @@ export default {
     return {
       inputAccount: "",
       inputPw: "",
-      loginInfo: {}
+      loginInfo: {},
+      sss:false
     };
   },
   created() {
-    if (localStorage.getItem("loginStatus") == 'true') {
+    if (localStorage.getItem("loginStatus") == "true") {
       // 登录了跳向 /
       console.log("触发");
       this.$router.push("HomeTabForAhead");
@@ -51,7 +54,7 @@ export default {
             this.loginInfo.passWord == this.inputPw
           ) {
             console.log("进来登录逻辑了");
-            localStorage.setItem("loginStatus", 'true');
+            localStorage.setItem("loginStatus", "true");
             localStorage.setItem("userName", this.loginInfo.userName);
             this.$router.push({
               name: "home"
@@ -71,7 +74,7 @@ export default {
       this.$router.push({
         name: "home"
       });
-      localStorage.setItem("loginStatus", 'false');
+      localStorage.setItem("loginStatus", "false");
     },
     //判断字符是否为空的方法
     isEmpty(obj) {
@@ -87,34 +90,33 @@ export default {
 
 <style scoped>
 /*#1D222F*/
-.container {
-  width: 1920px;
-  height: 1080px;
+
+
+.loginContainer {
+ 
   background: url("../../static/login_bg.png") no-repeat;
-  background-size: 1920px 1080px;
-  position: relative;
+  background-size: cover;
+  height: 1080px;
 }
 
-.centerImg {
-  width: 680px;
-  height: 600px;
-  position: absolute;
-  top: 240px;
-  left: 460px;
+.centerContent {
+  background: url("../../static/login_bg.png") no-repeat;
+  background-size: cover;
+  width: 70%;
+  height: 500px;
+  margin: 130px auto;
 }
 
 .box {
-  position: absolute;
-  width: 320px;
-  height: 600px;
+  float: right;
+  width: 300px;
+  height: 500px;
   background: #1d222f;
-  right: 460px;
-  top: 238px;
 }
 
 .box img {
   display: block;
-  margin: 130px auto 0px;
+  margin:50px auto 0;
 }
 
 .elInput {

@@ -2,7 +2,7 @@
   <div class="books">
     <ul>
       <li v-for="(item,index) in eBookList" @click="toDetails" :key="index">
-        <img :src="item.bookImg" alt />
+        <img :src="item.bookUrl" alt />
         <span class="bookName">{{item.bookName}}</span>
         <span class="bookAuthor">{{item.bookAuthor}}</span>
       </li>
@@ -23,9 +23,11 @@ export default {
   },
   methods: {
     getFalseData() {
-      this.$http.get("/home/list").then(
+      this.$http.get("../../../static/FalseData/FalseDataForEBook.json").then(
         res => {
-          this.eBookList = res.body.articles;
+          console.log(res.body);
+          
+          this.eBookList = res.body.eBook[0].eBook01;
         },
         err => {
           console.log(err);
@@ -45,6 +47,10 @@ export default {
 </script>
 
 <style scoped>
+
+.books{
+  margin-top: 20px;
+}
 .books ul li {
   float: left;
   list-style: none;
@@ -56,6 +62,7 @@ export default {
 
 .books ul li img {
   width: 90%;
+  height: 230px;
   background: rgba(0, 0, 0, 0);
 }
 

@@ -40,7 +40,7 @@ export default {
        var data = sessionStorage.getItem("specaialFlaseData");
        console.log(JSON.parse(data));
        
-        this.AIlist =JSON.parse(data).special[1].special01
+        this.AIlist =JSON.parse(data).special[0].special01
     },
     toSpecialDetails() {
       this.$router.push({

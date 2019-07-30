@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(item,index) in AI_List" class="bigComment" :key="index">
         <span class="title" @click="toDetails">
-          <b>前端{{item.title}}</b>
+          <b>{{item.title}}</b>
         </span>
         <a href="#">
           <p>{{item.content}}</p>

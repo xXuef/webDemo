@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(item,index) in liList" class="bigComment" :key="index">
         <span class="title" @click="toDetails">
-          <b>前端{{item.title}}</b>
+          <b>{{item.title}}</b>
         </span>
         <a href="#">
           <p>{{item.content}}</p>
@@ -56,9 +56,7 @@ export default {
     toDetails() {
       this.$router.push({
         name: "webAheadDetails",
-        query: {
-          name: "前端"
-        }
+       
       });
     },
     star() {
@@ -76,6 +74,7 @@ export default {
 };
 </script>
 <style>
+
 .HomeContainer ul li {
   padding: 10px 10px 20px;
   border-bottom: 1px solid rgba(245, 245, 245, 1);

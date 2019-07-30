@@ -1,0 +1,63 @@
+{
+  "desc": "电子书数据",
+  "eBook": [
+    {
+      "id": 3001,
+      "type": "all",
+      "eBook01": [
+        {
+          "bookUrl": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3383549644,201841657&fm=15&gp=0.jpg",
+          "bookAuthor": "吴道弘",
+          "bookName": "星空集"
+        },
+
+        {
+          "bookUrl": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=947467429,927596481&fm=26&gp=0.jpg",
+          "bookAuthor": "钱钟书",
+          "bookName": "围城"
+        },
+        {
+          "bookUrl": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3514165600,2089339492&fm=15&gp=0.jpg",
+          "bookAuthor": "[爱尔兰]凯特·汤普森",
+          "bookName": "通往未来的门"
+        },
+        {
+          "bookUrl": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2744469895,451736072&fm=26&gp=0.jpg",
+          "bookAuthor": "孙瑞雪",
+          "bookName": "爱和自由"
+        },
+        {
+          "bookUrl": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=435288353,1579640239&fm=26&gp=0.jpg",
+          "bookAuthor": "余小元",
+          "bookName": "正面思考的力量"
+        },
+        {
+          "bookUrl": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1308497968,255437147&fm=26&gp=0.jpg",
+          "bookAuthor": "查尔斯·狄更斯",
+          "bookName": "大卫·科波菲尔"
+        },
+
+        {
+          "bookUrl": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=947467429,927596481&fm=26&gp=0.jpg",
+          "bookAuthor": "钱钟书",
+          "bookName": "围城"
+        },
+        {
+          "bookUrl": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3514165600,2089339492&fm=15&gp=0.jpg",
+          "bookAuthor": "[爱尔兰]凯特·汤普森",
+          "bookName": "通往未来的门"
+        },
+        {
+          "bookUrl": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2744469895,451736072&fm=26&gp=0.jpg",
+          "bookAuthor": "孙瑞雪",
+          "bookName": "爱和自由"
+        },
+        {
+          "bookUrl": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=435288353,1579640239&fm=26&gp=0.jpg",
+          "bookAuthor": "余小元",
+          "bookName": "正面思考的力量"
+        }
+      ]
+    }
+  ]
+}

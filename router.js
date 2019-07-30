@@ -16,6 +16,7 @@ import WebAheadDetails from "./src/components/page/WebAheadDetails.vue";
 import Special from "./src/components/specialPage/Special.vue";
 import SpecialForTabAHead from "./src/components/specialPage/SpecialTabForAhead.vue";
 import SpecialTabForAI from "./src/components/specialPage/SpecialTabForAI.vue";
+import SpecialTabForFormwork from "./src/components/specialPage/SpecialTabForFormwork.vue";
 
 import Error from "./src/components/Error.vue";
 
@@ -35,6 +36,7 @@ import PersonalFeel from "./src/components/PersonalCenter/PersonalFeel.vue";
 import PersonalFeelDetails from "./src/components/PersonalCenter/PersonalFeelDetails";
 import SpecialDetails from "./src/components/specialPage/SpecialDetails";
 
+import TestPage from './src/components/page/TestPage.vue'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -43,6 +45,11 @@ export default new VueRouter({
       path: "/login",
       name: "login",
       component: Login
+    },
+    {
+      path: "/test",
+      name: "test",
+      component: TestPage
     },
     {
       path: "/home",
@@ -119,6 +126,13 @@ export default new VueRouter({
               name: "specialTabForAI",
               components: {
                 specialRouter: SpecialTabForAI
+              }
+            },
+            {
+              path: "specialTabForFormwork",
+              name: "specialTabForFormwork",
+              components: {
+                specialRouter: SpecialTabForFormwork
               }
             }
           ]
@@ -216,7 +230,7 @@ export default new VueRouter({
     },
     {
       path: '/*',
-      redirect: '/login'
+      redirect: '/home'
     }
   ]
 });
