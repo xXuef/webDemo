@@ -18,7 +18,7 @@
     <span class="forComm">相关推荐</span>
     <div class="divComment">
       <ul>
-        <li v-for="item in CdList">
+        <li v-for="(item,index) in CdList" :key="index">
           <a href="#">
             <span class="cdTitle">{{item.cdTitle}}</span>
             <span class="cdContent">{{item.cdContent}}</span>

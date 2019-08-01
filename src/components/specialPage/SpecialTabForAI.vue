@@ -33,13 +33,16 @@ export default {
   },
   created() {
     this.getFalseData();
+    this.$emit("getNowTab", "AI");
+  },
+  activated(){
+    this.$emit("getNowTab", "AI");
   },
   methods: {
     getFalseData() {
 
        var data = sessionStorage.getItem("specaialFlaseData");
-       console.log(JSON.parse(data));
-       
+      //  console.log(JSON.parse(data));
         this.AIlist =JSON.parse(data).special[1].special01
     },
     toSpecialDetails() {

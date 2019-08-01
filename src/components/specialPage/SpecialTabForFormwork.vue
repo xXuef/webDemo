@@ -1,12 +1,7 @@
 <template>
   <div class="specialContainer">
     <ul>
-      <li
-        v-for="(item,index) in AIlist"
-        class="specialLi"
-        @click="toSpecialDetails"
-        :key="index"
-      >
+      <li v-for="(item,index) in AIlist" class="specialLi" @click="toSpecialDetails" :key="index">
         <img :src="item.imgUrl" alt />
         <div class="describe">
           <p class="specialTitle">
@@ -28,19 +23,21 @@
 export default {
   data() {
     return {
-        AIlist:[]
+      AIlist: []
     };
   },
   created() {
     this.getFalseData();
+    this.$emit("getNowTab", "fromWork");
+  },
+  activated() {
+    this.$emit("getNowTab", "fromWork");
   },
   methods: {
     getFalseData() {
-
-       var data = sessionStorage.getItem("specaialFlaseData");
-       console.log(JSON.parse(data));
-       
-        this.AIlist =JSON.parse(data).special[0].special01
+      var data = sessionStorage.getItem("specaialFlaseData");
+      //  console.log(JSON.parse(data));
+      this.AIlist = JSON.parse(data).special[0].special01;
     },
     toSpecialDetails() {
       this.$router.push({

@@ -38,17 +38,20 @@ export default {
   activated() {
     //  this.$route.query.tabName==true?this.$route.query.tabName:'webHead'
     this.$emit("whatName", "webHead");
-    console.log("router");
+    this.$emit("navSelect", "1");
+   
   },
+  
   created() {
     this.getList();
+      this.$emit("navSelect", "1");
   },
   methods: {
     getList() {
       this.$http
         .get("../../../static/FalseData/FalseDataForHome.json")
         .then(res => {
-          console.log(res.body);
+          // console.log(res.body);
           sessionStorage.setItem("homeFlaseData", JSON.stringify(res.body));
           this.liList = res.body.home[0].data.webAheadData;
         });

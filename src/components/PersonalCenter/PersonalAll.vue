@@ -44,10 +44,11 @@
     },
     created() {
       this.loadFirstPage()
-
+      this.$emit("navSelect", "4");
+      this.$loading()
     },
     activated() {
-      this.$emit('nowIndex', '4')
+       this.$emit("navSelect", "4");
     },
     methods: {
       getActiveName(name) {

@@ -15,7 +15,9 @@
 
     <list-sort></list-sort>
 
-    <router-view name="eBookRouter"></router-view>
+    <keep-alive>
+      <router-view name="eBookRouter" @getNowTab="getTabName"></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -35,10 +37,12 @@ export default {
   },
   activated() {
     this.loadRoute();
-    this.$emit("navSelect", "1");
+    this.$emit("navSelect", "3");
   },
   created() {
     this.loadRoute();
+    this.$emit("navSelect", "3");
+    this.$loading();
   },
   methods: {
     loadRoute() {
@@ -66,7 +70,10 @@ export default {
           name: "eBookTabForAHead"
         });
       }
-      console.log(tab, event);
+      // console.log(tab, event);
+    },
+    getTabName(name){
+      this.activeName =name
     }
   }
 };

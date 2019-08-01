@@ -1,92 +1,99 @@
 // 此界面为login之后的第一界面架子
 <template>
-  <div class="myHeader">
-    <!--头部`````````````````````````````````````````````````````````-->
-    <div class="allWp">
-      <div class="wp">
-        <img class="myIcon" src="../../static/icon_home_want_delete.png" alt />
-        <el-menu
-          :default-active="activeIndex"
-          @select="handleSelect"
-          class="el-menu-demo"
-          mode="horizontal"
-        >
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-menu-item index="2">专题</el-menu-item>
-          <el-menu-item index="3">电子书</el-menu-item>
-          <el-menu-item index="4">个人中心</el-menu-item>
-        </el-menu>
+  <el-container>
+    <el-header>
+      <!--头部`````````````````````````````````````````````````````````-->
+      <div class="allWp">
+        <div class="wp">
+          <img class="myIcon" src="../../static/icon_home_want_delete.png" alt />
+          <el-menu
+            :default-active="activeIndex"
+            @select="handleSelect"
+            class="el-menu-demo"
+            mode="horizontal"
+          >
+            <el-menu-item index="1">首页</el-menu-item>
+            <el-menu-item index="2">专题</el-menu-item>
+            <el-menu-item index="3">电子书</el-menu-item>
+            <el-menu-item index="4">个人中心</el-menu-item>
+          </el-menu>
 
-        <div class="topRight">
-          <ul>
-            <li>
-              <img
-                class="userIcon"
-                src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-              />
+          <div class="topRight">
+            <ul>
+              <li>
+                <img
+                  class="userIcon"
+                  src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2589000459,765914848&fm=26&gp=0.jpg"
+                />
 
-              <el-dropdown trigger="click" @command="handleCommand">
-                <span class="el-dropdown-link">{{this.userName}}</span>
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item command="a">退出</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </li>
+                <el-dropdown trigger="click" @command="handleCommand">
+                  <span
+                    class="el-dropdown-link"
+                    style="color:#1B2945;margin:5px;vertical-align: middle;"
+                  >{{this.userName}}</span>
+                  <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item command="a">退出</el-dropdown-item>
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </li>
 
-            <li @click="toSend">
-              <i class="el-icon-edit-outline"></i>
-              <span>发布</span>
-            </li>
+              <li @click="toSend">
+                <i class="el-icon-edit-outline"></i>
+                <span class="topTxt">发布</span>
+              </li>
 
-            <li @click="toMyFeel">
-              <i class="el-icon-s-opportunity"></i>
-              <span>观后感</span>
-            </li>
-          </ul>
-        </div>
-        <div class="textLogin">
-          <a href="#">
-            <span @click="showDialogLogin">账号登录</span>
-          </a>
+              <li @click="toMyFeel">
+                <i class="el-icon-s-opportunity"></i>
+                <span class="topTxt">观后感</span>
+              </li>
+            </ul>
+          </div>
+          <div class="textLogin">
+            <a href="#">
+              <span @click="showDialogLogin">账号登录</span>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </el-header>
 
-    <!--diaLog---------------------------------------------------------------->
-    <div class="divToast">
-      <el-dialog
-        title="提示"
-        :visible.sync="centerDialogVisible"
-        width="30%"
-        :modal-append-to-body="false"
-        class="divElDialog"
-        center
-        @close="closeDialog"
-      >
-        <div class="dialogBody" style="text-align: center;padding: 0">
-          <el-input class="elInput inputOne" clearable v-model="inputOne" placeholder="账号"></el-input>
-          <el-input
-            class="elInput inputTwo"
-            type="password"
-            clearable
-            v-model="inputTwo"
-            placeholder="密码"
-          ></el-input>
+    <el-main>
+      <!--diaLog---------------------------------------------------------------->
+      <div class="divToast" v-cloak>
+        <el-dialog
+          title="提示"
+          :visible.sync="centerDialogVisible"
+          width="30%"
+          :modal-append-to-body="false"
+          class="divElDialog"
+          center
+          @close="closeDialog"
+        >
+          <div class="dialogBody" style="text-align: center;padding: 0">
+            <el-input class="elInput inputOne" clearable v-model="inputOne" placeholder="账号"></el-input>
+            <el-input
+              class="elInput inputTwo"
+              type="password"
+              clearable
+              v-model="inputTwo"
+              placeholder="密码"
+            ></el-input>
 
-          <span class="forgetPw">忘记密码</span>
-        </div>
-        <span slot="footer" class="dialog-footer">
-          <el-button class="btLogin" type="primary" @click="btForLogin">确定</el-button>
-        </span>
-      </el-dialog>
-    </div>
-    <!--内容界面------------------------------------------------------->
-    <div class="autoCenter">
-      <keep-alive>
-        <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
-      </keep-alive>
-    </div>
-  </div>
+            <span class="forgetPw">忘记密码</span>
+          </div>
+          <span slot="footer" class="dialog-footer">
+            <el-button class="btLogin" type="primary" @click="btForLogin">确定</el-button>
+          </span>
+        </el-dialog>
+      </div>
+      <!--内容界面------------------------------------------------------->
+      <div class="autoCenter">
+        <keep-alive>
+          <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
+        </keep-alive>
+      </div>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
@@ -107,8 +114,13 @@ export default {
     this.loginBooleanNow();
     this.loadRoute();
     this.userName = localStorage.getItem("userName");
+    this.getNavSelect();
   },
 
+  activated() {
+    this.getNavSelect();
+    this.$loading({ target: "el-main" });
+  },
   methods: {
     // 下拉菜单
     handleCommand(command) {
@@ -126,7 +138,7 @@ export default {
     getNavSelect(name) {
       console.log("nowNav" + name);
 
-      this.activeName = name;
+      this.activeIndex = name;
     },
     // 去发布编辑页面
     toSend() {
@@ -171,12 +183,10 @@ export default {
           name: "eBookTabForAHead"
         });
       } else if (key == 4) {
+        console.log("4");
         var loginOrNo = localStorage.getItem("loginStatus");
-        console.log(localStorage.getItem("loginStatus"));
 
         if (loginOrNo == "false") {
-          console.log("123123123123");
-
           this.showDialogLogin();
           this.isClickPersonalCenter = true;
           this.showTabs(false);
@@ -196,7 +206,7 @@ export default {
       console.log("loginBooleanNow" + LoginOrNo);
 
       if (LoginOrNo == "true") {
-        console.log("+++++++++++++++++++");
+        // console.log("+++++++++++++++++++");
 
         //如果登录状态为true 登录按钮出来block 另外三个按钮none
         $(function() {
@@ -211,7 +221,6 @@ export default {
         });
       }
       this.hiddenDialogLogin();
-      console.log("test" + this.$route.query.textNum);
     },
     // 显示登录dialog
     showDialogLogin() {
@@ -222,7 +231,7 @@ export default {
       this.centerDialogVisible = false;
     },
     closeDialog() {
-      console.log("dialog关闭监听");
+      // console.log("dialog关闭监听");
       // 进来不管啥都给他false
       this.isClickPersonalCenter = false;
       this.inputOne = "";
@@ -249,7 +258,7 @@ export default {
 
       this.$http.get("../../static/FalseData/LoginData.json").then(
         res => {
-          console.log(res);
+          // console.log(res);
           this.loginInfo = res.body.data[0];
           if (
             this.loginInfo.accountNum == this.inputOne &&
@@ -258,6 +267,8 @@ export default {
             console.log("进来登录逻辑了");
             localStorage.setItem("loginStatus", "true");
             localStorage.setItem("userName", this.loginInfo.userName);
+            localStorage.setItem("account", this.loginInfo.accountNum);
+            localStorage.setItem("userIcon", this.loginInfo.userIcon);
             this.$router.push({
               name: "HomeTabForAhead"
             });
@@ -269,7 +280,7 @@ export default {
             return;
           }
           $(function() {
-            console.log("click123");
+            // console.log("click123");
             $(".topRight").css("display", "block");
             $(".textLogin").css("display", "none");
           });
@@ -286,6 +297,11 @@ export default {
         err => {}
       );
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$loading({ fullscreen: false, target: "el-main" }).close();
+    });
   }
 };
 </script>
@@ -296,20 +312,19 @@ export default {
   padding: 0;
 }
 
-.myHeader {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow: scroll;
-  overflow-x: hidden;
-  background: rgba(242, 246, 250, 1);
+.el-container {
+  background: #f2f6fa;
 }
-
+.el-header {
+  padding: 0;
+}
+.el-main {
+  padding: 0;
+  min-height: 1000px;
+}
 /*background:rgba(242,246,250,1);*/
 .autoCenter {
-  padding: 0 10px 10px;
+  padding: 0 10px;
   /*background: #ffffff;*/
   width: 80%;
   margin: 0 auto;
@@ -324,7 +339,7 @@ export default {
 .wp {
   width: 80%;
   height: 45px;
-  margin: 0 auto 15px;
+  margin: 0 auto;
   padding: 0;
   position: relative;
 }
@@ -357,19 +372,22 @@ export default {
   color: #ccc;
   font-size: 15px;
   line-height: 45px;
-  height: 100%;
-  vertical-align: middle;
 }
 .topRight .userIcon {
-  height: 15px;
-  width: 15px;
-  border: none;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
-  line-height: 1;
+  vertical-align: middle;
+}
+.topRight .topTxt {
+  line-height: 45px;
+  color: #35aba3;
   vertical-align: middle;
 }
 .topRight [class*=" el-icon-"],
 [class^="el-icon-"] {
+  line-height: 45px;
+  font-size: 18px;
   vertical-align: middle;
 }
 .myIcon {
@@ -497,6 +515,12 @@ export default {
   text-align: center;
   border: none;
   min-width: 80px;
+}
+.tabContainer
+  .el-tabs--border-card
+  > .el-tabs__header
+  .el-tabs__item:first-child {
+  margin-left: 1px;
 }
 
 .tabContainer

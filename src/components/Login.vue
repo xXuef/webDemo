@@ -56,6 +56,8 @@ export default {
             console.log("进来登录逻辑了");
             localStorage.setItem("loginStatus", "true");
             localStorage.setItem("userName", this.loginInfo.userName);
+            localStorage.setItem("account", this.loginInfo.accountNum);
+            localStorage.setItem("userIcon", this.loginInfo.userIcon);
             this.$router.push({
               name: "home"
             });

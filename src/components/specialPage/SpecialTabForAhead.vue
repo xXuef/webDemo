@@ -34,20 +34,28 @@ export default {
   },
   created() {
     this.getFalseData();
-    this.$emit("nowIndex", "2");
+    // 顶部nav的前进回退同步方案
+    this.$emit("navSelect", "2");
+    // 二级tab前进后退选中同步方案
+    this.$emit("getNowTab", "webHead");
+  },
+  //路由加入keep-alive之后只会执行这个方法
+  activated() {
+    this.$emit("navSelect", "2");
+    this.$emit("getNowTab", "webHead");
   },
   methods: {
     getFalseData() {
+      // 这里想做数据缓存
       // var data = sessionStorage.getItem("specaialFlaseData");
       // if (data = !null) {
       //   var data = sessionStorage.getItem("specaialFlaseData");
-
       //   this.specialList = JSON.parse(data).special[0].special01;
       //   return;
       // }
       this.$http.get("../../../static/FalseData/FalseDataForSpecial.json").then(
         res => {
-          console.log(res.body);
+          // console.log(res.body);
           sessionStorage.setItem("specaialFlaseData", JSON.stringify(res.body));
           this.specialList = res.body.special[0].special01;
         },
@@ -64,6 +72,9 @@ export default {
         }
       });
     }
+  },
+  mounted() {
+    this.$loading().close();
   }
 };
 </script>
@@ -131,7 +142,20 @@ export default {
   line-height: 18px;
   color: rgba(102, 102, 102, 1);
   opacity: 1;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
+/* 限制行数 
+overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 要显示的行数;
+-webkit-box-orient: vertical;
+*/
 .specialContainer .describe .forUser {
   margin-top: 10px;
 }

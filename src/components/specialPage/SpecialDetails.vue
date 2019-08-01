@@ -1,18 +1,13 @@
 <template>
-
   <div class="ContentForThis">
-
-  
-    <div class="slideRight" style="overflow: hidden ;clear: both">
+    <div class="slideRight clearfix">
       <div class="slideContent" v-show="showRightContent">
         <p class="catalog">目录</p>
         <span class="chapter">连载中</span>
         <span class="chapter">共1010章</span>
         <ul>
           <li @click="chooseChapter" v-for="(item,index) in chapters" :key="index">
-            <a href="javascript:;">
-              {{item}}
-            </a>
+            <a href="javascript:;">{{item}}</a>
           </li>
         </ul>
       </div>
@@ -41,7 +36,6 @@
       <article class="contentOne">
         轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之几一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之级一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一模块之一。轨迹规划是无人驾驶系统的核心模块之。轨迹规划是无人驾驶系统。
         轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之几一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之级一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一模块之一。轨迹规划是无人驾驶系统的核心模块之。轨迹规划是无人驾驶系统。
-        轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之几一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之级一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一。轨模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无驾驶系统的核心模块之一。轨迹规划是无人驾驶系统轨迹规划是无人驾驶系统的核心模块之一。轨迹规划是无人驾驶系统的核心模块之一模块之一。轨迹规划是无人驾驶系统的核心模块之。轨迹规划是无人驾驶系统。
       </article>
       <span class="forComm">相关推荐</span>
       <div class="divComment">
@@ -61,7 +55,6 @@
         </ul>
       </div>
     </div>
-     
   </div>
 </template>
 
@@ -98,11 +91,11 @@ export default {
     setSoll() {
       $(function() {
         $("article").readmore({
-          blockCSS: "display: inline-block; width: 50%;",
-          embedCSS: false,
-          speed: 70,
+          // blockCSS: "display: inline-block; width: 50%;",
+          // embedCSS: false,
+          // speed: 70,
           moreLink: `<div class="moreText"><a href="#" style=" display:block;text-decoration: none ;color:#ccc;text-align: center" >加载更多<i style="margin-left: 10px" class="el-icon-bottom"></i></a></div>`,
-          lessLink: `<div class="closeText"style=" display:block;text-decoration: none ;color:#ccc;text-align: center" >收起文章<i style="margin-left: 10px" class="el-icon-top"></i></a></div>`
+          lessLink: `<div class="closeText"><a href="#" style=" display:block;text-decoration: none ;color:#ccc;text-align: center" >收起文章<i style="margin-left: 10px" class="el-icon-top"></i></a></div>`
         });
       });
     },
@@ -350,5 +343,21 @@ article {
 .slideContent ul li {
   margin-top: 20px;
   margin-left: 20px;
+}
+
+/* 兼容到IE8 */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: block; /* 也可以设置为block */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* 兼容IE6/7 */
+.clearfix {
+  *zoom: 1;
 }
 </style>

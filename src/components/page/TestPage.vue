@@ -1,13 +1,22 @@
 <template>
-  <div>
-    <span>{{this.$store.state.count}}</span>
+<!-- 练习vuex的界面  -->
+
+  <el-container>
+    <el-header>Header</el-header>
+    <el-main>
+      
+  <span>{{this.$store.state.count}}</span>
     <br/>
     <span>getter取值:{{this.$store.getters.getCount}}</span>
 
 <br/>
     <button @click="increment"> + </button>
     <button @click="reduce"> - </button>
-  </div>
+
+    </el-main>
+    <el-footer>Footer</el-footer>
+  </el-container>
+  
 </template>
 <script>
 export default {

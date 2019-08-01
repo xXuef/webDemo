@@ -3,7 +3,7 @@
     <span>{{msg}}</span>
     <div class="personalSendContainer">
       <ul>
-        <li v-for="(item,index) in liList">
+        <li v-for="(item,index) in liList" :key="index">
           <a href="javascript:;">
             <span class="title" @click="toDetails"><b>我的发布{{item.title}}</b></span></a>
           <a href="#">
@@ -51,6 +51,9 @@ export default {
         }
       })
     }
+  },
+  mounted(){
+     this.$loading().close()
   }
 }
 

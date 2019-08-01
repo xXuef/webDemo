@@ -15,7 +15,7 @@
 
     <list-sort></list-sort>
 
-    <router-view name="specialRouter"></router-view>
+    <router-view name="specialRouter" @getNowTab="getNowTab"></router-view>
   </div>
 </template>
 
@@ -37,7 +37,8 @@ export default {
       this.$emit('navSelect','2')
   },
   created() {
-    this.loadRoute();
+    this.loadRoute()
+    this.$loading()
   },
   methods: {
     loadRoute() {
@@ -66,7 +67,10 @@ export default {
           name: "specialTabForAhead"
         });
       }
-      console.log(tab, event);
+      // console.log(tab, event);
+    },
+    getNowTab(name){
+      this.activeName =name
     }
   }
 };

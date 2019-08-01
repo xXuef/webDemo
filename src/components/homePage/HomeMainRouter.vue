@@ -85,7 +85,7 @@ export default {
           query: {}
         });
       }
-      console.log(tab, event);
+      // console.log(tab, event);
     }
   }
 };
