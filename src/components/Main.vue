@@ -5,7 +5,7 @@
       <!--头部`````````````````````````````````````````````````````````-->
       <div class="allWp">
         <div class="wp">
-          <img class="myIcon" src="../../static/icon_home_want_delete.png" alt />
+          <div class="myIcon"></div>
           <el-menu
             :default-active="activeIndex"
             @select="handleSelect"
@@ -29,7 +29,7 @@
                 <el-dropdown trigger="click" @command="handleCommand">
                   <span
                     class="el-dropdown-link"
-                    style="color:#1B2945;margin:5px;vertical-align: middle;"
+                    style="color:#35aba3;margin:5px;vertical-align: middle;"
                   >{{this.userName}}</span>
                   <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="a">退出</el-dropdown-item>
@@ -71,13 +71,7 @@
         >
           <div class="dialogBody" style="text-align: center;padding: 0">
             <el-input class="elInput inputOne" clearable v-model="inputOne" placeholder="账号"></el-input>
-            <el-input
-              class="elInput inputTwo"
-              type="password"
-              clearable
-              v-model="inputTwo"
-              placeholder="密码"
-            ></el-input>
+            <el-input class="elInput inputTwo" show-password v-model="inputTwo" placeholder="密码"></el-input>
 
             <span class="forgetPw">忘记密码</span>
           </div>
@@ -87,7 +81,7 @@
         </el-dialog>
       </div>
       <!--内容界面------------------------------------------------------->
-      <div class="autoCenter">
+      <div class="autoCenter clearfix">
         <keep-alive>
           <router-view name="navContainer" @navSelect="getNavSelect"></router-view>
         </keep-alive>
@@ -98,7 +92,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       activeIndex: "1",
       userName: "",
@@ -109,7 +103,7 @@ export default {
       isClickPersonalCenter: false
     };
   },
-  created() {
+  created () {
     // 接收参数 外加判断
     this.loginBooleanNow();
     this.loadRoute();
@@ -117,50 +111,50 @@ export default {
     this.getNavSelect();
   },
 
-  activated() {
+  activated () {
     this.getNavSelect();
     this.$loading({ target: "el-main" });
   },
   methods: {
     // 下拉菜单
-    handleCommand(command) {
+    handleCommand (command) {
       if (command == "a") {
         localStorage.setItem("loginStatus", "false");
-        $(function() {
+        $(function () {
           $(".topRight").css("display", "none");
           $(".textLogin").css("display", "block");
         });
       }
     },
-    showTabs(value = false) {
+    showTabs (value = false) {
       this.tabShow = value;
     },
-    getNavSelect(name) {
+    getNavSelect (name) {
       console.log("nowNav" + name);
 
       this.activeIndex = name;
     },
     // 去发布编辑页面
-    toSend() {
+    toSend () {
       this.showTabs(false);
       this.$router.push({
         name: "toSend"
       });
     },
     // 去我的观后感界面
-    toMyFeel() {
+    toMyFeel () {
       this.$router.push({
         name: "personalFeel"
       });
     },
     //加载前端界面路由
-    loadRoute() {
+    loadRoute () {
       this.$router.push({
         name: "homeMainRoute"
       });
     },
     // nav导航的点击控制
-    handleSelect(key, keyPath) {
+    handleSelect (key, keyPath) {
       if (key == 1) {
         console.log("1");
         this.showTabs(true);
@@ -201,7 +195,7 @@ export default {
     },
     // 接收上个界面的路由参数判断是否登录
     // 并且显示隐藏右上角的登录跟用户界面
-    loginBooleanNow() {
+    loginBooleanNow () {
       var LoginOrNo = localStorage.getItem("loginStatus");
       console.log("loginBooleanNow" + LoginOrNo);
 
@@ -209,13 +203,13 @@ export default {
         // console.log("+++++++++++++++++++");
 
         //如果登录状态为true 登录按钮出来block 另外三个按钮none
-        $(function() {
+        $(function () {
           $(".topRight").css("display", "block");
           $(".textLogin").css("display", "none");
         });
       } else if (LoginOrNo == "false") {
         //如果登录状态为false  登录按钮出来block 另外三个按钮none
-        $(function() {
+        $(function () {
           $(".topRight").css("display", "none");
           $(".textLogin").css("display", "block");
         });
@@ -223,14 +217,14 @@ export default {
       this.hiddenDialogLogin();
     },
     // 显示登录dialog
-    showDialogLogin() {
+    showDialogLogin () {
       this.centerDialogVisible = true;
     },
     // 隐藏Dialog
-    hiddenDialogLogin() {
+    hiddenDialogLogin () {
       this.centerDialogVisible = false;
     },
-    closeDialog() {
+    closeDialog () {
       // console.log("dialog关闭监听");
       // 进来不管啥都给他false
       this.isClickPersonalCenter = false;
@@ -244,7 +238,7 @@ export default {
       }
     },
     // dialog中的登录按钮
-    btForLogin() {
+    btForLogin () {
       //非空判断
       var account = this.inputOne.trim();
       var pw = this.inputTwo.trim();
@@ -279,7 +273,7 @@ export default {
             });
             return;
           }
-          $(function() {
+          $(function () {
             // console.log("click123");
             $(".topRight").css("display", "block");
             $(".textLogin").css("display", "none");
@@ -294,11 +288,11 @@ export default {
             });
           }
         },
-        err => {}
+        err => { }
       );
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.$loading({ fullscreen: false, target: "el-main" }).close();
     });
@@ -320,12 +314,12 @@ export default {
 }
 .el-main {
   padding: 0;
-  min-height: 1000px;
+  min-height: 1080px;
 }
 /*background:rgba(242,246,250,1);*/
 .autoCenter {
   padding: 0 10px;
-  /*background: #ffffff;*/
+  background: #ffffff;
   width: 80%;
   margin: 0 auto;
 }
@@ -333,7 +327,7 @@ export default {
 .allWp {
   width: 100%;
   box-shadow: 0px 0px 2px 0px #ccc;
-  background: #ffffff;
+  background: #1b2945;
 }
 
 .wp {
@@ -384,8 +378,8 @@ export default {
   color: #35aba3;
   vertical-align: middle;
 }
-.topRight [class*=" el-icon-"],
-[class^="el-icon-"] {
+.topRight [class*=' el-icon-'],
+[class^='el-icon-'] {
   line-height: 45px;
   font-size: 18px;
   vertical-align: middle;
@@ -395,11 +389,8 @@ export default {
   height: 45px;
   cursor: pointer;
   float: left;
-}
-
-.myIcon img {
-  width: 100px;
-  height: 45px;
+  margin: 0;
+  background: url('/static/logo_black.png') no-repeat center;
 }
 
 /* Nav设置····························*/
@@ -411,11 +402,13 @@ export default {
   margin: 0 15px;
   font-size: 15px;
   line-height: 45px;
+  color: #fff;
 }
-
+/* nav的背景高度 以及左浮动 */
 .el-menu-demo {
   float: left;
   height: 45px;
+  background: #1b2945;
 }
 
 /*顶部nav的底部直线*/
@@ -423,13 +416,23 @@ export default {
   border-bottom: none;
 }
 
-/*顶部nav */
+/*顶部nav选中item的设置 */
 .el-menu--horizontal > .el-menu-item.is-active {
   border-bottom: none;
-  border-top: 2px solid #1b2945;
-  color: #303133;
+  border-top: 2px solid #fff;
+  color: #fff;
 }
-
+/* hover设置 */
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):focus,
+.el-menu--horizontal > .el-menu-item:not(.is-disabled):hover,
+.el-menu--horizontal > .el-submenu .el-submenu__title:hover {
+  background-color: #1b2945;
+}
+.el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
+.el-menu--horizontal .el-menu-item:not(.is-disabled):hover {
+  outline: 0;
+  color: #ffffff;
+}
 /*nav 设置完事······················*/
 /*内容*/
 
@@ -455,20 +458,13 @@ export default {
 }
 
 .divToast .dialogBody .el-input__inner {
-  -webkit-appearance: none;
   background: none;
   border-radius: 4px;
   border: 1px solid #dcdfe6;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   color: #606266;
-  display: inline-block;
   font-size: 15px;
   height: 40px;
   line-height: 40px;
-  outline: 0;
-  -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .divToast .btLogin {
@@ -529,8 +525,6 @@ export default {
   .el-tabs__item.is-active {
   color: #1b2945;
   background-color: #fff;
-  /*border-right-color: #DCDFE6;*/
-  /*border-left-color: #DCDFE6;*/
   border: none;
   box-shadow: none;
 }
@@ -561,28 +555,18 @@ export default {
 }
 
 .tabContainer .el-input__inner {
-  -webkit-appearance: none;
   background: none;
-  border-radius: 4px;
   border: 1px solid #dcdfe6;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  color: #606266;
-  display: inline-block;
+  color: #ffffff;
   font-size: 15px;
   height: 28px;
   line-height: 28px;
-  outline: 0;
-  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-  width: 100%;
 }
 
 .tabContainer .el-input__icon {
   height: 100%;
   width: 25px;
   text-align: center;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
   line-height: 28px;
 }
 
@@ -600,5 +584,39 @@ export default {
   color: #8492a6;
   font-size: 14px;
   margin-bottom: 20px;
+}
+.slide-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.slide-fade-enter-active {
+  transition: all 1.2s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.1s cubic-bezier(2, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  left: 0;
+  right: 0;
+  transform: translateX(50px);
+  opacity: 0;
+}
+
+/* 兼容到IE8 */
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: block; /* 也可以设置为block */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* 兼容IE6/7 */
+.clearfix {
+  *zoom: 1;
 }
 </style>

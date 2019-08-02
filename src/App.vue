@@ -29,9 +29,9 @@
         
         if (LoginOrNo=='true') {
           // 登录了跳向 /
-          this.$router.push('home');
+          this.$router.push({name:'main'});
         }else if(LoginOrNo=='false'){
-            this.$router.push('login');
+            this.$router.push({name:'login'});
         }   
       }
     }

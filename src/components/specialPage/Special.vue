@@ -14,8 +14,11 @@
     </div>
 
     <list-sort></list-sort>
-
-    <router-view name="specialRouter" @getNowTab="getNowTab"></router-view>
+    <transition name="slide-fade">
+      <keep-alive>
+        <router-view name="specialRouter" @getNowTab="getNowTab"></router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -23,7 +26,7 @@
 import ListSort from "../page/ListSort.vue";
 
 export default {
-  data() {
+  data () {
     return {
       input2: "",
       activeName: "webHead"
@@ -32,21 +35,21 @@ export default {
   components: {
     ListSort
   },
-  activated(){
+  activated () {
     this.loadRoute();
-      this.$emit('navSelect','2')
+    this.$emit("navSelect", "2");
   },
-  created() {
-    this.loadRoute()
-    this.$loading()
+  created () {
+    this.loadRoute();
+    this.$loading();
   },
   methods: {
-    loadRoute() {
+    loadRoute () {
       this.$router.push({
         name: "specialTabForAhead"
       });
     },
-    handleClick(tab, event) {
+    handleClick (tab, event) {
       if (tab.name == "webHead") {
         this.loadRoute();
       } else if (tab.name == "AI") {
@@ -69,8 +72,8 @@ export default {
       }
       // console.log(tab, event);
     },
-    getNowTab(name){
-      this.activeName =name
+    getNowTab (name) {
+      this.activeName = name;
     }
   }
 };
@@ -78,8 +81,6 @@ export default {
 
 <style scoped>
 .special {
-  height: 100%;
   background: #ffffff;
-  width: 100%;
 }
 </style>

@@ -13,8 +13,8 @@
 <style scoped>
 
   div{
-
     font-size: 40px;
     text-align: center;
+    color: red;
   }
 </style>

@@ -16,9 +16,11 @@
 
     <list-sort></list-sort>
 
-    <keep-alive>
-      <router-view name="homeTabRouter" @whatName="getName"></router-view>
-    </keep-alive>
+    <transition name="slide-fade">
+      <keep-alive>
+        <router-view name="homeTabRouter" @whatName="getName"></router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -111,5 +113,9 @@ ul {
 /* <!-- ie6 --> */
 .clearfix {
   zoom: 1;
+}
+
+.keepAlive {
+  position: relative;
 }
 </style>

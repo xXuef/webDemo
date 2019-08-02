@@ -1,6 +1,6 @@
 <template>
   <div class="books">
-    <ul>
+    <ul class="clearfix">
       <li v-for="(item,index) in eBookList" @click="toDetails" :key="index">
         
         <img :src="item.bookUrl" alt />
@@ -55,7 +55,8 @@ export default {
 </script>
 
 <style scoped>
-.books {
+
+.books ul{
   margin-top: 20px;
 }
 .books ul li {
@@ -65,6 +66,8 @@ export default {
   margin-bottom: 20px;
   text-align: center;
   cursor: pointer;
+  display: block;
+  
 }
 
 .books ul li img {
@@ -93,4 +96,7 @@ export default {
   color: rgba(40, 41, 35, 1);
   opacity: 1;
 }
+
+
+
 </style>

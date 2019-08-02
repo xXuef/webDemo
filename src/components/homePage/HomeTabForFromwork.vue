@@ -37,18 +37,18 @@ export default {
     this.$emit("whatName", "fromWork");
   },
   created() {
-      this.getLocaData()
+    this.getLocaData();
   },
   methods: {
     getLocaData() {
       var data = sessionStorage.getItem("homeFlaseData");
       this.FromWorkList = JSON.parse(data).home[2].data.webAheadData;
     },
-     toDetails() {
+    toDetails() {
       this.$router.push({
         name: "webAheadDetails",
         query: {
-          name:'架构'
+          name: "架构"
         }
       });
     },
@@ -60,6 +60,5 @@ export default {
       }
     }
   }
-
 };
 </script>

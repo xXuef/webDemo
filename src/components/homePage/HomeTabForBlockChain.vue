@@ -14,7 +14,7 @@
           <span class="userName">{{item.userName}}</span>
         </a>
         <a href="#" class="sendTime">{{item.time}}</a>
-        
+
         <a href="#" class="liStar">
           <i class="el-icon-star-off"></i>
           <span class="textStart" @click="star">收藏</span>
@@ -55,7 +55,7 @@ export default {
     },
     toDetails() {
       this.$router.push({
-        name: "webAheadDetails",
+        name: "webAheadDetails"
       });
     },
     star() {
@@ -76,5 +76,4 @@ export default {
 
 
 <style scoped>
-
 </style>

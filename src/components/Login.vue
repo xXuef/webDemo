@@ -2,12 +2,11 @@
   <div class="loginContainer">
     <div style="width: 20px;height: 20px; "></div>
     <div class="centerContent">
-
       <div class="box">
         <img src="../../static/icon_logo.png" alt />
 
         <el-input class="elInput inputOne" clearable v-model="inputAccount" placeholder="账号"></el-input>
-        <el-input class="elInput inputTwo" type="password" clearable v-model="inputPw" placeholder="密码"></el-input>
+        <el-input class="elInput inputTwo" show-password v-model="inputPw" placeholder="密码"></el-input>
         <el-button :plain="true" class="btLogin" @click="btLogin">登录</el-button>
         <el-button :plain="true" class="btLoginCopy" @click="skip">跳过</el-button>
       </div>
@@ -17,15 +16,15 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       inputAccount: "",
       inputPw: "",
       loginInfo: {},
-      sss:false
+      sss: false
     };
   },
-  created() {
+  created () {
     if (localStorage.getItem("loginStatus") == "true") {
       // 登录了跳向 /
       console.log("触发");
@@ -33,7 +32,7 @@ export default {
     }
   },
   methods: {
-    btLogin() {
+    btLogin () {
       //非空判断
       var account = this.inputAccount.trim();
       var pw = this.inputPw.trim();
@@ -59,7 +58,7 @@ export default {
             localStorage.setItem("account", this.loginInfo.accountNum);
             localStorage.setItem("userIcon", this.loginInfo.userIcon);
             this.$router.push({
-              name: "home"
+              name: "main"
             });
           } else {
             this.$message({
@@ -69,17 +68,17 @@ export default {
             return;
           }
         },
-        err => {}
+        err => { }
       );
     },
-    skip() {
+    skip () {
       this.$router.push({
-        name: "home"
+        name: "main"
       });
       localStorage.setItem("loginStatus", "false");
     },
     //判断字符是否为空的方法
-    isEmpty(obj) {
+    isEmpty (obj) {
       if (typeof obj == "undefined" || obj == null || obj == "") {
         return true;
       } else {
@@ -93,16 +92,14 @@ export default {
 <style scoped>
 /*#1D222F*/
 
-
 .loginContainer {
- 
-  background: url("../../static/login_bg.png") no-repeat;
+  background: url('../../static/login_bg.png') no-repeat;
   background-size: cover;
   height: 1080px;
 }
 
 .centerContent {
-  background: url("../../static/login_bg.png") no-repeat;
+  background: url('../../static/login_bg.png') no-repeat;
   background-size: cover;
   width: 70%;
   height: 500px;
@@ -118,7 +115,7 @@ export default {
 
 .box img {
   display: block;
-  margin:50px auto 0;
+  margin: 50px auto 0;
 }
 
 .elInput {

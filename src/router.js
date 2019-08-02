@@ -1,42 +1,42 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Login from "./src/components/Login.vue";
-import Home from "./src/components/Home.vue";
+import Login from "./components/Login.vue";
+import Main from "./components/Main.vue";
 // home
-import HomeMainRoute from "./src/components/homePage/HomeMainRouter.vue";
-import HomeTabForAhead from "./src/components/homePage/HomeTabForAhead.vue";
-import HomeTabForAI from "./src/components/homePage/HomeTabForAi.vue";
-import HomeTabForFromwork from "./src/components/homePage/HomeTabForFromwork.vue";
-import HomeTabForBlockChain from "./src/components/homePage/HomeTabForBlockChain.vue";
-import HomeTabForComputerCode from "./src/components/homePage/HomeTabForComputerCode.vue";
+import HomeMainRoute from "./components/homePage/HomeMainRouter.vue";
+import HomeTabForAhead from "./components/homePage/HomeTabForAhead.vue";
+import HomeTabForAI from "./components/homePage/HomeTabForAi.vue";
+import HomeTabForFromwork from "./components/homePage/HomeTabForFromwork.vue";
+import HomeTabForBlockChain from "./components/homePage/HomeTabForBlockChain.vue";
+import HomeTabForComputerCode from "./components/homePage/HomeTabForComputerCode.vue";
 
 //
-import WebAheadDetails from "./src/components/page/WebAheadDetails.vue";
+import WebAheadDetails from "./components/page/WebAheadDetails.vue";
 //special
-import Special from "./src/components/specialPage/Special.vue";
-import SpecialForTabAHead from "./src/components/specialPage/SpecialTabForAhead.vue";
-import SpecialTabForAI from "./src/components/specialPage/SpecialTabForAI.vue";
-import SpecialTabForFormwork from "./src/components/specialPage/SpecialTabForFormwork.vue";
+import Special from "./components/specialPage/Special.vue";
+import SpecialForTabAHead from "./components/specialPage/SpecialTabForAhead.vue";
+import SpecialTabForAI from "./components/specialPage/SpecialTabForAI.vue";
+import SpecialTabForFormwork from "./components/specialPage/SpecialTabForFormwork.vue";
 
-import Error from "./src/components/Error.vue";
+import Error from "./components/Error.vue";
 
 // ebook
-import EBook from "./src/components/eBookPage/EBook.vue";
-import EBookTabForAHead from "./src/components/eBookPage/EBookTabForAhead.vue";
-import EBookTabForAI from "./src/components/eBookPage/EBookTabForAI.vue";
-// 
-import RecommendDetails from "./src/components/page/RecommendDetails.vue";
+import EBook from "./components/eBookPage/EBook.vue";
+import EBookTabForAHead from "./components/eBookPage/EBookTabForAhead.vue";
+import EBookTabForAI from "./components/eBookPage/EBookTabForAI.vue";
+// 详情
+import RecommendDetails from "./components/page/RecommendDetails.vue";
+// 个人中心
+import PersonalAll from "./components/PersonalCenter/PersonalAll.vue";
+import PersonalSend from "./components/PersonalCenter/PersonalSend.vue";
+import ToSend from "./components/PersonalCenter/ToSend.vue";
+import PersonalComment from "./components/PersonalCenter/PersonalComment.vue";
+import PersonalStar from "./components/PersonalCenter/PersonalStar.vue";
+import PersonalFeel from "./components/PersonalCenter/PersonalFeel.vue";
+import PersonalFeelDetails from "./components/PersonalCenter/PersonalFeelDetails";
+import SpecialDetails from "./components/specialPage/SpecialDetails";
 
-import PersonalAll from "./src/components/PersonalCenter/PersonalAll.vue";
-import PersonalSend from "./src/components/PersonalCenter/PersonalSend.vue";
-import ToSend from "./src/components/PersonalCenter/ToSend.vue";
-import PersonalComment from "./src/components/PersonalCenter/PersonalComment.vue";
-import PersonalStar from "./src/components/PersonalCenter/PersonalStar.vue";
-import PersonalFeel from "./src/components/PersonalCenter/PersonalFeel.vue";
-import PersonalFeelDetails from "./src/components/PersonalCenter/PersonalFeelDetails";
-import SpecialDetails from "./src/components/specialPage/SpecialDetails";
-
-import TestPage from './src/components/page/TestPage.vue'
+import TestPage from './components/page/TestPage.vue'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -52,9 +52,9 @@ export default new VueRouter({
       component: TestPage
     },
     {
-      path: "/home",
-      name: "home",
-      component: Home,
+      path: "/main",
+      name: "main",
+      component: Main,
       children: [
         {
           path: "homeMainRoute",
@@ -230,7 +230,7 @@ export default new VueRouter({
     },
     {
       path: '/*',
-      redirect: '/home'
+      redirect: '/login'
     }
   ]
 });

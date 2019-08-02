@@ -14,10 +14,11 @@
     </div>
 
     <list-sort></list-sort>
-
-    <keep-alive>
-      <router-view name="eBookRouter" @getNowTab="getTabName"></router-view>
-    </keep-alive>
+    <transition name="slide-fade">
+      <keep-alive>
+        <router-view name="eBookRouter" @getNowTab="getTabName"></router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -26,7 +27,7 @@ import ListSort from "../page/ListSort.vue";
 
 export default {
   name: "EBook",
-  data() {
+  data () {
     return {
       activeName: "webHead",
       input2: ""
@@ -35,45 +36,45 @@ export default {
   components: {
     ListSort
   },
-  activated() {
+  activated () {
     this.loadRoute();
     this.$emit("navSelect", "3");
   },
-  created() {
+  created () {
     this.loadRoute();
     this.$emit("navSelect", "3");
     this.$loading();
   },
   methods: {
-    loadRoute() {
+    loadRoute () {
       this.$router.push({
         name: "eBookTabForAHead"
       });
     },
-    handleClick(tab, event) {
+    handleClick (tab, event) {
       if (tab.name == "webHead") {
         this.loadRoute();
       } else if (tab.name == "AI") {
         this.$router.push({
           name: "eBookTabForAI"
-        });
+        })
       } else if (tab.name == "fromWork") {
         this.$router.push({
           name: "eBookTabForAHead"
-        });
+        })
       } else if (tab.name == "blockChain") {
         this.$router.push({
           name: "eBookTabForAI"
-        });
+        })
       } else if (tab.name == "codeLanguage") {
         this.$router.push({
           name: "eBookTabForAHead"
-        });
+        })
       }
       // console.log(tab, event);
     },
-    getTabName(name){
-      this.activeName =name
+    getTabName (name) {
+      this.activeName = name;
     }
   }
 };
@@ -82,7 +83,6 @@ export default {
 <style scoped>
 .eBookContainer {
   height: 100%;
-  overflow: hidden;
   background: #ffffff;
 }
 

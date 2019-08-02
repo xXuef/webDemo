@@ -1,5 +1,5 @@
 <template>
-  <div>AI</div>
+  <div class="clearfix">AI</div>
 </template>
 
 <script>
@@ -18,4 +18,8 @@ export default {
 </script>
 
 <style scoped>
+*{
+  padding: 10px;
+
+}
 </style>

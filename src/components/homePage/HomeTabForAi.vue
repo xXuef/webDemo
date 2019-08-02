@@ -1,5 +1,5 @@
 <template>
-   <div class="HomeContainer">
+  <div class="HomeContainer">
     <ul>
       <li v-for="(item,index) in AI_List" class="bigComment" :key="index">
         <span class="title" @click="toDetails">
@@ -31,25 +31,25 @@
 export default {
   data() {
     return {
-      AI_List:[]
+      AI_List: []
     };
   },
   activated() {
     this.$emit("whatName", "AI");
   },
-  created(){
-    this.getLocaData()
+  created() {
+    this.getLocaData();
   },
-  methods:{
-    getLocaData(){
-      var data = sessionStorage.getItem('homeFlaseData')
-      this.AI_List =JSON.parse(data).home[1].data.webAheadData;
+  methods: {
+    getLocaData() {
+      var data = sessionStorage.getItem("homeFlaseData");
+      this.AI_List = JSON.parse(data).home[1].data.webAheadData;
     },
-     toDetails() {
+    toDetails() {
       this.$router.push({
         name: "webAheadDetails",
         query: {
-          name: 'AI'
+          name: "AI"
         }
       });
     },

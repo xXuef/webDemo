@@ -344,20 +344,4 @@ article {
   margin-top: 20px;
   margin-left: 20px;
 }
-
-/* 兼容到IE8 */
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: block; /* 也可以设置为block */
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-/* 兼容IE6/7 */
-.clearfix {
-  *zoom: 1;
-}
 </style>

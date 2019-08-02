@@ -7,7 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import $ from 'jquery'
 import VueResource from 'vue-resource'
-import router from '../router.js'
+import router from './router.js'
 import store from './store/index.js'
 Vue.use(VueResource)
 Vue.use(ElementUI)
