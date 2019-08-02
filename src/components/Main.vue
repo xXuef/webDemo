@@ -112,6 +112,7 @@ export default {
   },
 
   activated () {
+    this.loadRoute();
     this.getNavSelect();
     this.$loading({ target: "el-main" });
   },
