@@ -18,7 +18,7 @@
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "font-awesome-loader": "^1.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mockjs": "^1.0.1-beta3",
